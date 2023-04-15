@@ -2,7 +2,7 @@ module Dumpable
   class FileWriter
     def self.write(lines, options)
       if options[:file]
-        File.open(options[:file], "w") do |file|
+        File.open(options[:file], "a") do |file|
           file.puts lines
         end
       else
