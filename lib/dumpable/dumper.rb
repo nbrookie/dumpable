@@ -74,7 +74,7 @@ module Dumpable
       keys = key_values.collect { |item| "\"#{item[0]}\"" }.join(", ")
       values = key_values.collect { |item| item[1].to_s }.join(", ")
 
-      "INSERT INTO #{object.class.table_name} (#{ keys }) VALUES (#{ values });"
+      "INSERT INTO #{object.class.table_name} (#{ keys }) VALUES (#{ values }) ON CONFLICT DO NOTHING;"
     end
 
     # http://invisipunk.blogspot.com/2008/04/activerecord-raw-insertupdate.html
