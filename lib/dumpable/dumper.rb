@@ -88,7 +88,7 @@ module Dumpable
       when "Fixnum" || "Integer"
         value
       when "String"
-        "E\'#{value.gsub(/'/, "\\\\'")}\'"
+        "E\'#{value.gsub(/'/, "\\\\'")}\'".gsub(/\\"/, '\\\\\"')
       when "FalseClass"
         "\'0\'"
       when "TrueClass"
