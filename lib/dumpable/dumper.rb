@@ -11,8 +11,8 @@ module Dumpable
     end
 
     def dump
-      recursive_dump(@dumpee, @dumps)
       @lines << generate_insert_query(@dumpee)
+      recursive_dump(@dumpee, @dumps)
     end
 
     def self.dump(*records_and_collections)
