@@ -35,9 +35,9 @@ module Dumpable
     private
 
     def recursive_dump(object, dumps)
-      if dumps.nil?
+      return if dumps.nil?
 
-      elsif dumps.is_a?(Array)
+      if dumps.is_a?(Array)
         dumps.each do |mini_dump|
           recursive_dump(object, mini_dump)
         end
@@ -98,7 +98,7 @@ module Dumpable
       when "Array"
         "E\'#{value}\'"
       when "Hash"
-        "\'#{value.to_json}\'"
+        "\'#{value.to_json}\'".gsub(/\\"/, '\\\\\"')
       else
         "\'#{value}\'"
       end
